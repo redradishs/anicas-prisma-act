@@ -33,10 +33,13 @@ async function main() {
         });
 
 
-        const findData = await prisma.account.findMany({
+        const findData = await prisma.account.findUnique({
+            where: {
+                id: newAccount.id
+            },
             include: {
                 profile: true,
-                module: true            
+                module: true
             }
         });
 
